@@ -1,7 +1,12 @@
 [package]
 name = "luapack"
+license = "MIT"
 version = "0.1.0"
 edition = "2024"
+categories = ["compression", "encoding"]
+keywords = ["pack", "bundle", "minify", "lua"]
+repository = "https://github.com/the-unnamed-goose/luapack/tree/master"
+description = "A basic rust application for efficiently bundling Lua scripts into monolithic releases."
 
 [dependencies]
 anyhow = "1.0.100"

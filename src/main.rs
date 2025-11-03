@@ -6,7 +6,11 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 #[derive(Parser)]
-#[command(author, version, about)]
+#[command(
+    author = "The Unnamed Goose",
+    version,
+    about = "A basic rust application for efficiently bundling Lua scripts into monolithic releases."
+)]
 struct Cli {
     #[arg(short, long)]
     banner: Option<PathBuf>,
