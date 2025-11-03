@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-release:
-    name: Build & Release (cross-compiled)
+    name: Build & Release
     runs-on: ubuntu-latest
 
     strategy:
