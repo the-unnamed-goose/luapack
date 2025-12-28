@@ -22,7 +22,7 @@ struct Args {
     output: PathBuf,
     #[arg(short, long)]
     file: PathBuf,
-    #[cfg(feature="lz4")]
+    #[cfg(feature = "lz4")]
     #[arg(short, long)]
     lz4: bool,
 }
@@ -37,14 +37,14 @@ fn main() -> Result<()> {
     let bundle = Bundler::bundle(args.file)?;
     let ast = parse(&bundle).map_err(|e| anyhow::anyhow!("Parse error: {:?}", e))?;
     output.extend_from_slice(&format!("{}", Packer::new().visit_ast(ast)).as_bytes());
-    #[cfg(feature="lz4")]
+    #[cfg(feature = "lz4")]
     if args.lz4 {
-      output.extend_from_slice(b"lz4decompress(\"");
-      output.extend_from_slice(&lz4_flex::compress_prepend_size(&output));
-      output.extend_from_slice(b"\")");
-      return Ok(());
+        output.extend_from_slice(b"lz4decompress(\"");
+        output.extend_from_slice(&lz4_flex::compress_prepend_size(&output));
+        output.extend_from_slice(b"\")");
+        return Ok(());
     }
-    
+
     fs::write(&args.output, output)?;
     Ok(())
 }
